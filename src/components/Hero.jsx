@@ -1,5 +1,5 @@
 import './Hero.css'
-import bgHero from '../assets/top-view-books-arrangement.jpg'
+import bgHero from '../assets/pexels-stanley-morales-1454360.jpg'
 const Hero = () => {
     return (
         <div>
