@@ -1,5 +1,6 @@
 import './Hero.css'
 import bgHero from '../assets/pexels-stanley-morales-1454360.jpg'
+import InputModal from './InputModal';
 const Hero = () => {
     return (
         <div>
@@ -11,17 +12,16 @@ const Hero = () => {
                 </div>
                 <div className="hero-exclusions">
                     <a href="#popup1">
-                        <p className="exclusions">*click here for details</p>
+                        <button className="border-0 inline-block py-4 px-5 text-white bg-black text-center cursor-pointer border-5 border-black border-solid -ml-1 mt-5 text-md tracking-widest font-bold">Search For Colleges</button>
                     </a>
                 </div>
 
                 <div id="popup1" className="overlay">
                     <div className="popup">
-                        <a className="close" href="#">&times;</a>
+                        <a className="close bg-red-600 rounded-full py-1 px-4 text-center" href="#">&times;</a>
                         <div className="content">
-                            <h2>Promotional Information & Exclusions</h2>
-                            This is a list of exclusions
 
+                            <InputModal />
                         </div>
                     </div>
                 </div>
