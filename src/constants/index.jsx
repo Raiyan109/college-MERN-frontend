@@ -21,19 +21,7 @@ export const CollegesList = [
         "id": 2,
         "image": 'https://i.ibb.co/Dz2YHLc/notredem.jpg',
         "name": 'Notre Dame',
-        "admissionDates": "Tue 8 Aug 23",
-        "events": {
-            "name": 'Cultural Program',
-            "time": '22th Oct 23',
-            "place": 'Notre Dame Campus'
-        },
-        "researchHistory": {
-            "name": 'Finding solutions to feed the world whilst caring for the planet',
-            "researcher": 'Golam Mowla'
-        },
-        "sports": {
-            "name": 'Activity Studios'
-        },
+        "review": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Numquam, sed magnam! Fugiat rem minima aperiam debitis quod animi! Reprehenderit, inventore dolor? Quas, consequatur. Maxime, tenetur quasi pariatur quidem harum tempora!",
     },
     {
         "id": 3,
@@ -167,6 +155,29 @@ export const CollegesListForHomePage = [
 ]
 
 
+export const StudentsReviews = [
+    {
+        "id": 1,
+        "image": 'https://i.ibb.co/RBWyML3/player-1.png',
+        "name": 'Julkarnine Mahmud',
+        "review": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Numquam, sed magnam! Fugiat rem minima aperiam debitis quod animi! Reprehenderit, inventore dolor? Quas, consequatur. Maxime, tenetur quasi pariatur quidem harum tempora!",
+        "rating": "",
+    },
+    {
+        "id": 2,
+        "image": 'https://i.ibb.co/NLXqGnm/player-2.png',
+        "name": 'Sulaiman Ahmed',
+        "review": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Numquam, sed magnam! Fugiat rem minima aperiam debitis quod animi! Reprehenderit, inventore dolor? Quas, consequatur. Maxime, tenetur quasi pariatur quidem harum tempora!",
+        "rating": "",
+    },
+    {
+        "id": 3,
+        "image": 'https://i.ibb.co/vPf8kGh/player-3.png',
+        "name": 'Abu Yusuf',
+        "review": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Numquam, sed magnam! Fugiat rem minima aperiam debitis quod animi! Reprehenderit, inventore dolor? Quas, consequatur. Maxime, tenetur quasi pariatur quidem harum tempora!",
+        "rating": "",
+    }
+]
 
 
 
