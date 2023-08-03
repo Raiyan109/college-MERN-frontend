@@ -19,6 +19,8 @@ const College = ({ college, id, idx }) => {
                         <p className="mt-2 opacity-60 group-hover:opacity-70 ">Researches: <span className="font-bold">{college.researchHistory.name}</span> by <span className="font-bold">{college.researchHistory.researcher}</span></p>
 
                         <p className="mt-2 opacity-60 group-hover:opacity-70 ">Sports: <span className="font-bold">{college.sports.name}</span></p>
+
+                        <Link to={`/colleges/${id}`} ><button className='bg-pink-600 text-xs text-right p-3 rounded-md mt-3'>See details</button></Link>
                     </div>
                 </div>
             </div>

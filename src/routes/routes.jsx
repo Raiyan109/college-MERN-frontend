@@ -4,6 +4,7 @@ import Admission from "../components/admission/Admission";
 import Colleges from "../components/colleges/Colleges";
 import MyCollege from "../components/myCollege/MyCollege";
 import NotFound from "../pages/NotFound";
+import CollegeDetail from "../components/CollegeDetail";
 
 const routes = createBrowserRouter([
     {
@@ -17,6 +18,10 @@ const routes = createBrowserRouter([
     {
         path: '/colleges',
         element: <Colleges />
+    },
+    {
+        path: '/colleges/:id',
+        element: <CollegeDetail />
     },
     {
         path: '/myCollege',
