@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { FaBars, FaTimes } from 'react-icons/fa'
+import { BiLogIn } from 'react-icons/bi'
 import logo from '../assets/line.png'
 
 const Navbar = () => {
@@ -40,10 +41,13 @@ const Navbar = () => {
 
                     <div className={`md:flex md:items-center w-full md:w-auto ${menu ? "block bg-gray-600 w-[900px] h-[600px] flex items-center justify-center transition-all" : "hidden"}`} id="mobile-menu">
                         <ul className="flex flex-col mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium">
-                            <li className='block py-2 pr-4 pl-3 '><Link className='text-xl font-bold text-green' to='/'>Home</Link></li>
-                            <li className='block py-2 pr-4 pl-3 '><Link className='text-xl font-bold text-green' to='/admission'>Admission</Link></li>
-                            <li className='block py-2 pr-4 pl-3 '><Link className='text-xl font-bold text-green' to='/colleges'>Colleges</Link></li>
-                            <li className='block py-2 pr-4 pl-3 '><Link className='text-xl font-bold text-green' to='/myCollege'>My College </Link></li>
+                            <li className='block py-2 pr-4 pl-3 '><Link className='text-xl font-bold ' to='/'>Home</Link></li>
+                            <li className='block py-2 pr-4 pl-3 '><Link className='text-xl font-bold ' to='/admission'>Admission</Link></li>
+                            <li className='block py-2 pr-4 pl-3 '><Link className='text-xl font-bold ' to='/colleges'>Colleges</Link></li>
+                            <li className='block py-2 pr-4 pl-3 '><Link className='text-xl font-bold ' to='/myCollege'>My College </Link></li>
+                            <li className='block py-2 pr-4 pl-3 '><Link className='text-2xl font-bold ' to='/login'>
+                                <BiLogIn />
+                            </Link></li>
                         </ul>
                     </div>
                 </div>
