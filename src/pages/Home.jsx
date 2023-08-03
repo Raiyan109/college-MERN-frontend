@@ -3,6 +3,7 @@ import Hero from "../components/Hero";
 import Navbar from "../components/Navbar";
 import Colleges from '../components/Colleges'
 import Gallary from "../components/Gallary";
+import ResearchPapers from "../components/ResearchPapers";
 
 const Home = () => {
     return (
@@ -10,6 +11,7 @@ const Home = () => {
             <Navbar />
             <Hero />
             <Colleges />
+            <ResearchPapers />
             <Gallary />
             <Footer />
         </div>

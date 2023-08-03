@@ -8,8 +8,8 @@ import groupStudents6 from '../assets/college-group6.jpg'
 
 const Gallary = () => {
     return (
-        <div>
-            <div className="mx-auto mb-[60px] max-w-[510px] text-center lg:mb-20">
+        <div className='mb-16'>
+            <div className="mx-auto mb-[90px] max-w-[510px] text-center lg:mb-20">
                 <h1 id='article' className="text-3xl font-bold text-blue">Colleges Image Gallery</h1>
             </div>
             <div className="gridywrap">
