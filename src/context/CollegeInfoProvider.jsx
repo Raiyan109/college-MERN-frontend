@@ -1,5 +1,6 @@
 import { createContext, useEffect, useState } from "react";
-
+import { auth, provider, facebookProvider } from '../firebase.config'
+import { signInWithPopup } from 'firebase/auth';
 
 export const COLLEGE_CONTEXT = createContext()
 
@@ -21,8 +22,39 @@ const CollegeInfoProvider = ({ children }) => {
         fetchAdmission()
     }, [])
 
+
+    // AUTH
+    // const [value, setValue] = useState('')
+    const [user, setUser] = useState('')
+
+    const handleGoogleLogin = (e) => {
+        e.preventDefault()
+        signInWithPopup(auth, provider)
+            .then((data) => {
+                const user = data.user
+                setUser(user)
+            })
+            .catch((err) => {
+                console.error('Firebase Google Login Error:', err);
+            });
+    };
+
+    const handleFacebookLogin = (e) => {
+        e.preventDefault()
+        signInWithPopup(auth, facebookProvider)
+            .then((data) => {
+                const user = data.user
+                setUser(user)
+            })
+            .catch((err) => {
+                console.error('Firebase Facebook Login Error:', err);
+            });
+    };
     const value = {
-        admission
+        admission,
+        handleGoogleLogin,
+        handleFacebookLogin,
+        user
     }
     return (
         <COLLEGE_CONTEXT.Provider value={value}>

@@ -1,13 +1,15 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { FaBars, FaTimes } from 'react-icons/fa'
 import { BiLogIn } from 'react-icons/bi'
 import logo from '../assets/line.png'
+import { COLLEGE_CONTEXT } from "../context/CollegeInfoProvider";
 
 const Navbar = () => {
 
     const [menu, setMenu] = useState(false)
     const [color, setColor] = useState(false)
+    const { user } = useContext(COLLEGE_CONTEXT)
 
     const changeColor = () => {
         if (window.scrollY >= 100) {
@@ -47,6 +49,9 @@ const Navbar = () => {
                             <li className='block py-2 pr-4 pl-3 '><Link className='text-xl font-bold ' to='/myCollege'>My College </Link></li>
                             <li className='block py-2 pr-4 pl-3 '><Link className='text-2xl font-bold ' to='/login'>
                                 <BiLogIn />
+                            </Link></li>
+                            <li className='block py-2 pr-4 pl-3 '><Link className='text-2xl font-bold ' to='/profile'>
+                                {user.displayName}
                             </Link></li>
                         </ul>
                     </div>

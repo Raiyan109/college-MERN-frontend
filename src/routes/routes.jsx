@@ -6,6 +6,7 @@ import MyCollege from "../components/myCollege/MyCollege";
 import NotFound from "../pages/NotFound";
 import CollegeDetail from "../components/CollegeDetail";
 import Login from "../pages/Login";
+import Profile from "../components/Profile";
 
 const routes = createBrowserRouter([
     {
@@ -31,6 +32,10 @@ const routes = createBrowserRouter([
     {
         path: '/login',
         element: <Login />
+    },
+    {
+        path: '/profile',
+        element: <Profile />
     },
     {
         path: '*',
