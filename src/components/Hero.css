@@ -150,15 +150,15 @@
 }
 
 /* unvisited link */
-a:link {
+/* a:link {
     color: #fff;
     text-decoration: none;
-}
+} */
 
 /* visited link */
-a:visited {
+/* a:visited {
     color: #fff;
-}
+} */
 
 /* mouse over link */
 a:hover {

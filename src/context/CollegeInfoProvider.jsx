@@ -99,8 +99,45 @@ const CollegeInfoProvider = ({ children }) => {
             });
     }
 
+
+    // Candidate states
+    const [candidateName, setCandidateName] = useState('')
+    const [candidateSubject, setCandidateSubject] = useState('')
+    const [candidateEmail, setCandidateEmail] = useState('')
+    const [candidatePhone, setCandidatePhone] = useState('')
+    const [candidateAddress, setCandidateAddress] = useState('')
+    const [candidateBirth, setCandidateBirth] = useState('')
+
+    const handleCandidateForm = async (e) => {
+        e.preventDefault()
+        const response = await fetch('http://localhost:5000/api/candidate', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                candidateName,
+                candidateSubject,
+                candidateEmail,
+                candidatePhone,
+                candidateAddress,
+                candidateBirth
+            })
+        })
+
+        const candidateData = await response.json()
+        console.log(candidateData);
+    }
+
+
     // Modal state
     const [showModal, setShowModal] = useState(false)
+
+
+
+
+
+
     const value = {
         admission,
         handleGoogleLogin,
@@ -112,7 +149,20 @@ const CollegeInfoProvider = ({ children }) => {
         handleLogin,
         fetchEmailLogin,
         showModal,
-        setShowModal
+        setShowModal,
+        handleCandidateForm,
+        candidateName,
+        candidateSubject,
+        candidateEmail,
+        candidatePhone,
+        candidateAddress,
+        candidateBirth,
+        setCandidateName,
+        setCandidateSubject,
+        setCandidateEmail,
+        setCandidatePhone,
+        setCandidateAddress,
+        setCandidateBirth
     }
     return (
         <COLLEGE_CONTEXT.Provider value={value}>

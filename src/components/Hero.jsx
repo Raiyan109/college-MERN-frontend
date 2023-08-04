@@ -1,5 +1,5 @@
 import './Hero.css'
-import bgHero from '../assets/pexels-stanley-morales-1454360.jpg'
+import bgHero from '../assets/pexels-max-fischer-5211478.jpg'
 import InputModal from './InputModal';
 const Hero = () => {
     return (
