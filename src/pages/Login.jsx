@@ -4,7 +4,8 @@ import logo from '../assets/line.png'
 
 
 const Login = () => {
-    const { handleGoogleLogin, handleFacebookLogin } = useContext(COLLEGE_CONTEXT)
+    const { handleGoogleLogin, handleFacebookLogin, email, setEmail,
+        password, setPassword, handleLogin } = useContext(COLLEGE_CONTEXT)
 
 
     return (
@@ -19,14 +20,21 @@ const Login = () => {
                                     <img src={logo} loading="lazy" className="w-10" alt="tailus logo" />
                                     <h2 className="mb-8 text-2xl text-cyan-900 font-bold">Sign in to unlock the <br /> best of Dream Colleges.</h2>
                                 </div>
-                                <form >
+                                <form onSubmit={handleLogin}>
                                     <div className="mt-16 grid space-y-4">
                                         <label className="font-semibold text-xs" >Username or Email</label>
-                                        <input className="flex items-center group h-12 px-6 border-2 border-gray-300 rounded-full transition duration-300 hover:border-blue-400 focus:bg-blue-50 active:bg-blue-100" type="text" />
+                                        <input
+                                            value={email}
+                                            onChange={(e) => setEmail(e.target.value)}
+                                            className="flex items-center group h-12 px-6 border-2 border-gray-300 rounded-full transition duration-300 hover:border-blue-400 focus:bg-blue-50 active:bg-blue-100" type="email" />
 
                                         <label className="font-semibold text-xs mt-3" >Password</label>
-                                        <input className="flex items-center group h-12 px-6 border-2 border-gray-300 rounded-full transition duration-300 hover:border-blue-400 focus:bg-blue-50 active:bg-blue-100" type="password" />
+                                        <input
+                                            value={password}
+                                            onChange={(e) => setPassword(e.target.value)}
+                                            className="flex items-center group h-12 px-6 border-2 border-gray-300 rounded-full transition duration-300 hover:border-blue-400 focus:bg-blue-50 active:bg-blue-100" type="password" />
 
+                                        <input className='flex items-center justify-center group h-12 px-6 border-2 border-gray-300 rounded-full transition duration-300  hover:text-white text-black font-semibold hover:bg-gray-800 cursor-pointer' type="submit" value="Login" />
 
                                         <p>Or use any of these...</p>
 

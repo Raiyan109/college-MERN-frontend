@@ -26,6 +26,43 @@ const CollegeInfoProvider = ({ children }) => {
     // AUTH
     // const [value, setValue] = useState('')
     const [user, setUser] = useState('')
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    const [fetchEmailLogin, setFetchEmailLogin] = useState([])
+
+
+    // Email password
+    const handleLogin = async (e) => {
+        e.preventDefault()
+        const response = await fetch('http://localhost:5000/api/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                email,
+                password
+            })
+        })
+
+        const data = await response.json()
+        console.log(data);
+    }
+
+    useEffect(() => {
+        const fetchEmailLogin = async () => {
+            const response = await fetch('http://localhost:5000/api/login')
+
+            const json = await response.json()
+
+            if (response.ok) {
+                setFetchEmailLogin(json)
+            }
+
+        }
+        fetchEmailLogin()
+    }, [])
+
 
     const handleGoogleLogin = (e) => {
         e.preventDefault()
@@ -61,12 +98,21 @@ const CollegeInfoProvider = ({ children }) => {
                 console.error('Firebase Logout Error:', err);
             });
     }
+
+    // Modal state
+    const [showModal, setShowModal] = useState(false)
     const value = {
         admission,
         handleGoogleLogin,
         handleFacebookLogin,
         user,
-        handleSignOut
+        handleSignOut,
+        email, setEmail,
+        password, setPassword,
+        handleLogin,
+        fetchEmailLogin,
+        showModal,
+        setShowModal
     }
     return (
         <COLLEGE_CONTEXT.Provider value={value}>
