@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { COLLEGE_CONTEXT } from "../context/CollegeInfoProvider";
 
 const Profile = () => {
-    const { user } = useContext(COLLEGE_CONTEXT)
+    const { user, handleSignOut } = useContext(COLLEGE_CONTEXT)
     return (
         <div className="container mx-auto my-60">
             <div>
@@ -61,9 +61,12 @@ const Profile = () => {
                             </div>
                         </div>
 
-                        <div className="flex justify-center items-center my-5 px-6">
-                            <a href="" className="text-gray-500 bg-gray-900 hover:text-gray-900 hover:bg-gray-100 rounded transition duration-150 ease-in font-medium text-sm text-center w-2/4 py-3">Edit Profile </a>
-
+                        <div className="flex justify-between items-center my-5 px-6 gap-3">
+                            <button className="text-gray-500 bg-gray-900 hover:text-gray-900 hover:bg-gray-100 rounded transition duration-150 ease-in font-medium text-sm text-center w-2/4 py-3">Edit Profile </button>
+                            {user ?
+                                <button onClick={handleSignOut} className="text-gray-500 bg-gray-900 hover:text-gray-900 hover:bg-gray-100 rounded transition duration-150 ease-in font-medium text-sm text-center w-2/4 py-3">Sign Out </button>
+                                : ""
+                            }
                         </div>
                     </div>
                 </div>

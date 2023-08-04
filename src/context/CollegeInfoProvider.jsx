@@ -1,6 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import { auth, provider, facebookProvider } from '../firebase.config'
-import { signInWithPopup } from 'firebase/auth';
+import { signInWithPopup, signOut } from 'firebase/auth';
 
 export const COLLEGE_CONTEXT = createContext()
 
@@ -50,11 +50,23 @@ const CollegeInfoProvider = ({ children }) => {
                 console.error('Firebase Facebook Login Error:', err);
             });
     };
+
+    // SIGN OUT
+    const handleSignOut = () => {
+        signOut(auth)
+            .then(() => {
+                setUser({})
+            })
+            .catch((err) => {
+                console.error('Firebase Logout Error:', err);
+            });
+    }
     const value = {
         admission,
         handleGoogleLogin,
         handleFacebookLogin,
-        user
+        user,
+        handleSignOut
     }
     return (
         <COLLEGE_CONTEXT.Provider value={value}>
