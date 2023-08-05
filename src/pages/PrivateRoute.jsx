@@ -5,7 +5,10 @@ import { COLLEGE_CONTEXT } from "../context/CollegeInfoProvider";
 const PrivateRoute = ({ children }) => {
     const { user, currentUser } = useContext(COLLEGE_CONTEXT)
 
-    return currentUser ? children : <Navigate to='/login' />
+    if (!currentUser || !user) {
+        return <Navigate to='/login' />
+    }
+    return children
 };
 
 export default PrivateRoute;
