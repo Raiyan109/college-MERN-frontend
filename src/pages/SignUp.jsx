@@ -3,15 +3,13 @@ import { COLLEGE_CONTEXT } from "../context/CollegeInfoProvider";
 import logo from '../assets/line.png'
 import { Link } from "react-router-dom";
 const SignUp = () => {
-    const { handleGoogleLogin, handleFacebookLogin, emailRef,
-        passwordRef,
-        passwordConfirmRef, signUp, handleLogin } = useContext(COLLEGE_CONTEXT)
-    const [error, setError] = useState('')
-    const [loading, setLoading] = useState(false)
+    const { handleGoogleLogin, handleFacebookLogin, emailRef, passwordRef, passwordConfirmRef, signUp, currentUser, error, setError, loading, setLoading, handleLogin } = useContext(COLLEGE_CONTEXT)
+    console.log(currentUser);
+
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-
+        console.log(passwordRef.current.value);
         if (passwordRef.current.value !== passwordConfirmRef.current.value) {
             return setError('Passwords do not match')
         }
@@ -39,6 +37,11 @@ const SignUp = () => {
                             </div>
                             <form onSubmit={handleSubmit}>
                                 <div className="mt-16 grid space-y-4">
+                                    {currentUser ? (
+                                        <p>Welcome, {currentUser.email}!</p>
+                                    ) : (
+                                        <p>Please log in or sign up</p>
+                                    )}
                                     {error &&
                                         <p className="py-3 px-4 bg-red-100 text-black">{error}</p>
                                     }

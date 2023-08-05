@@ -1,6 +1,6 @@
 import { createContext, useEffect, useRef, useState } from "react";
 import { auth, provider, facebookProvider } from '../firebase.config'
-import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithPopup, signOut } from 'firebase/auth';
+import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithPopup, signOut } from "firebase/auth";
 
 export const COLLEGE_CONTEXT = createContext()
 
@@ -15,7 +15,7 @@ const CollegeInfoProvider = ({ children }) => {
     const emailRef = useRef()
     const passwordRef = useRef()
     const passwordConfirmRef = useRef()
-    const [currentUser, setCurrentUser] = useState()
+    const [currentUser, setCurrentUser] = useState(null)
     // Candidate states
     const [candidateName, setCandidateName] = useState('')
     const [candidateSubject, setCandidateSubject] = useState('')
@@ -25,6 +25,8 @@ const CollegeInfoProvider = ({ children }) => {
     const [candidateBirth, setCandidateBirth] = useState('')
     // Modal state
     const [showModal, setShowModal] = useState(false)
+    const [error, setError] = useState('')
+    const [loading, setLoading] = useState(false)
 
 
     // ADMISSION
@@ -45,16 +47,24 @@ const CollegeInfoProvider = ({ children }) => {
 
     // AUTH
     // Sign Up
-    const signUp = (email, password) => {
-        createUserWithEmailAndPassword(email, password)
-    }
+    const signUp = async (email, password) => {
+        try {
+            setError('');
+            setLoading(true);
+            await createUserWithEmailAndPassword(auth, email, password);
+        } catch (error) {
+            setError('Failed to create an account');
+        }
+        setLoading(false);
+    };
 
     useEffect(() => {
-        const unSubscribe = auth.onAuthStateChanged(user => {
-            setCurrentUser(user)
-        })
-        return unSubscribe
-    }, [])
+        const unSubscribe = onAuthStateChanged(auth, (user) => {
+            setCurrentUser(user);
+            console.log(user);
+        });
+        return unSubscribe;
+    }, []);
 
 
     // Email password Login
@@ -179,7 +189,8 @@ const CollegeInfoProvider = ({ children }) => {
         passwordRef,
         passwordConfirmRef,
         currentUser,
-        signUp
+        signUp,
+        error, loading, setError, setLoading
     }
     return (
         <COLLEGE_CONTEXT.Provider value={value}>
