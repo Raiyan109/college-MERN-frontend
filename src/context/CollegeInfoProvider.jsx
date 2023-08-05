@@ -3,6 +3,7 @@ import { auth, provider, facebookProvider } from '../firebase.config'
 import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
 import Loading from "../pages/Loading";
 
+
 export const COLLEGE_CONTEXT = createContext()
 
 const CollegeInfoProvider = ({ children }) => {
@@ -28,7 +29,6 @@ const CollegeInfoProvider = ({ children }) => {
     const [showModal, setShowModal] = useState(false)
     const [error, setError] = useState('')
     const [loading, setLoading] = useState(false)
-
 
     // ADMISSION
     useEffect(() => {

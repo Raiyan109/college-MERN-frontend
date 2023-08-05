@@ -8,6 +8,7 @@ import CollegeDetail from "../components/CollegeDetail";
 import Login from "../pages/Login";
 import Profile from "../components/Profile";
 import SignUp from "../pages/SignUp";
+import UpdateProfile from '../components/UpdateProfile'
 
 const routes = createBrowserRouter([
     {
@@ -41,6 +42,10 @@ const routes = createBrowserRouter([
     {
         path: '/profile',
         element: <Profile />
+    },
+    {
+        path: '/update-profile',
+        element: <UpdateProfile />
     },
     {
         path: '*',

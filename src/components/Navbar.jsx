@@ -57,7 +57,7 @@ const Navbar = () => {
                             </Link></li>
                             <li className='block py-2 pr-4 pl-3 '><Link className='text-2xl font-bold ' to='/profile'>
                                 {user.displayName ? user.displayName : email}
-                                {currentUser.email}
+                                {currentUser?.email}
                             </Link></li>
                         </ul>
                     </div>
