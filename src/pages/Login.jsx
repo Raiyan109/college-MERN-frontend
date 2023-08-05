@@ -6,8 +6,22 @@ import { Link } from 'react-router-dom';
 
 const Login = () => {
     const { handleGoogleLogin, handleFacebookLogin, email, setEmail,
-        password, setPassword, handleLogin } = useContext(COLLEGE_CONTEXT)
+        password, setPassword, handleLogin, error, setError, loading, setLoading, emailRef, passwordRef, passwordConfirmRef, currentUser } = useContext(COLLEGE_CONTEXT)
 
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+
+
+        try {
+            setError('')
+            setLoading(true)
+            await handleLogin(emailRef.current.value, passwordRef.current.value)
+        } catch (error) {
+            setError('Failed to login ' + error.message)
+        }
+        setLoading(false)
+
+    }
 
     return (
         <div>
@@ -21,18 +35,28 @@ const Login = () => {
                                     <img src={logo} loading="lazy" className="w-10" alt="tailus logo" />
                                     <h2 className="mb-8 text-2xl text-cyan-900 font-bold">Login to unlock the <br /> best of Dream Colleges.</h2>
                                 </div>
-                                <form onSubmit={handleLogin}>
+                                <form onSubmit={handleSubmit}>
                                     <div className="mt-16 grid space-y-4">
+                                        {currentUser ? (
+                                            <p>Welcome, {currentUser.email}!</p>
+                                        ) : (
+                                            <p>Please log in or sign up</p>
+                                        )}
+                                        {error &&
+                                            <p className="py-3 px-4 bg-red-100 text-black">{error}</p>
+                                        }
                                         <label className="font-semibold text-xs" >Username or Email</label>
                                         <input
-                                            value={email}
-                                            onChange={(e) => setEmail(e.target.value)}
+                                            // value={email}
+                                            // onChange={(e) => setEmail(e.target.value)}
+                                            ref={emailRef}
                                             className="flex items-center group h-12 px-6 border-2 border-gray-300 rounded-full transition duration-300 hover:border-blue-400 focus:bg-blue-50 active:bg-blue-100" type="email" />
 
                                         <label className="font-semibold text-xs mt-3" >Password</label>
                                         <input
-                                            value={password}
-                                            onChange={(e) => setPassword(e.target.value)}
+                                            // value={password}
+                                            // onChange={(e) => setPassword(e.target.value)}
+                                            ref={passwordRef}
                                             className="flex items-center group h-12 px-6 border-2 border-gray-300 rounded-full transition duration-300 hover:border-blue-400 focus:bg-blue-50 active:bg-blue-100" type="password" />
 
                                         <input className='flex items-center justify-center group h-12 px-6 border-2 border-gray-300 rounded-full transition duration-300  hover:text-white text-black font-semibold hover:bg-gray-800 cursor-pointer' type="submit" value="Login" />

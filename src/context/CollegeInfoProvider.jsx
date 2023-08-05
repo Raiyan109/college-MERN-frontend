@@ -1,6 +1,6 @@
 import { createContext, useEffect, useRef, useState } from "react";
 import { auth, provider, facebookProvider } from '../firebase.config'
-import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithPopup, signOut } from "firebase/auth";
+import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
 import Loading from "../pages/Loading";
 
 export const COLLEGE_CONTEXT = createContext()
@@ -69,8 +69,17 @@ const CollegeInfoProvider = ({ children }) => {
 
 
     // Email password Login
-    const handleLogin = async (e) => {
-        e.preventDefault()
+    const handleLogin = async (email, password) => {
+
+        try {
+            setError('');
+            setLoading(true);
+            await signInWithEmailAndPassword(auth, email, password);
+        } catch (error) {
+            setError('Failed to create an account');
+        }
+        setLoading(false);
+
         const response = await fetch('http://localhost:5000/api/login', {
             method: 'POST',
             headers: {
