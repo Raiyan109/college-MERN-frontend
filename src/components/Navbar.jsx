@@ -48,7 +48,12 @@ const Navbar = () => {
                             <li className='block py-2 pr-4 pl-3 '><Link className='text-xl font-bold ' to='/colleges'>Colleges</Link></li>
                             <li className='block py-2 pr-4 pl-3 '><Link className='text-xl font-bold ' to='/myCollege'>My College </Link></li>
                             <li className='block py-2 pr-4 pl-3 '><Link className='text-2xl font-bold ' to='/login'>
-                                <BiLogIn />
+                                {/* <BiLogIn /> */}
+                                Login
+                            </Link></li>
+                            <li className='block py-2 pr-4 pl-3 '><Link className='text-2xl font-bold ' to='/signUp'>
+                                {/* <BiLogIn /> */}
+                                Sign Up
                             </Link></li>
                             <li className='block py-2 pr-4 pl-3 '><Link className='text-2xl font-bold ' to='/profile'>
                                 {user.displayName ? user.displayName : email}

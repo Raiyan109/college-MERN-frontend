@@ -7,6 +7,7 @@ import NotFound from "../pages/NotFound";
 import CollegeDetail from "../components/CollegeDetail";
 import Login from "../pages/Login";
 import Profile from "../components/Profile";
+import SignUp from "../pages/SignUp";
 
 const routes = createBrowserRouter([
     {
@@ -28,6 +29,10 @@ const routes = createBrowserRouter([
     {
         path: '/myCollege',
         element: <MyCollege />
+    },
+    {
+        path: '/signUp',
+        element: <SignUp />
     },
     {
         path: '/login',
