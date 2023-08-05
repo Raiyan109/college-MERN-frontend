@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import { COLLEGE_CONTEXT } from '../context/CollegeInfoProvider';
 import logo from '../assets/line.png'
+import { Link } from 'react-router-dom';
 
 
 const Login = () => {
@@ -18,7 +19,7 @@ const Login = () => {
                             <div className="p-6 sm:p-16">
                                 <div className="space-y-4">
                                     <img src={logo} loading="lazy" className="w-10" alt="tailus logo" />
-                                    <h2 className="mb-8 text-2xl text-cyan-900 font-bold">Sign in to unlock the <br /> best of Dream Colleges.</h2>
+                                    <h2 className="mb-8 text-2xl text-cyan-900 font-bold">Login to unlock the <br /> best of Dream Colleges.</h2>
                                 </div>
                                 <form onSubmit={handleLogin}>
                                     <div className="mt-16 grid space-y-4">
@@ -64,6 +65,9 @@ const Login = () => {
                                     <p className="text-xs">By proceeding, you agree to our <a href="#" className="underline">Terms of Use</a> and confirm you have read our <a href="#" className="underline">Privacy and Cookie Statement</a>.</p>
                                     <p className="text-xs">This site is protected by reCAPTCHA and the <a href="#" className="underline">Google Privacy Policy</a> and <a href="#" className="underline">Terms of Service</a> apply.</p>
                                 </div> */}
+                                <p className='mt-6 font-semibold'>New to Dream Colleges?
+                                    <Link className='text-blue-500 ml-3' to={'/signUp'}>Sign up</Link>
+                                </p>
                             </div>
                         </div>
                     </div>

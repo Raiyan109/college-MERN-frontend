@@ -1,13 +1,33 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useRef, useState } from "react";
 import { auth, provider, facebookProvider } from '../firebase.config'
-import { signInWithPopup, signOut } from 'firebase/auth';
+import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithPopup, signOut } from 'firebase/auth';
 
 export const COLLEGE_CONTEXT = createContext()
 
 const CollegeInfoProvider = ({ children }) => {
 
     const [admission, setAdmission] = useState([])
+    const [user, setUser] = useState('')
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    const [fetchEmailLogin, setFetchEmailLogin] = useState([])
+    // Email password Sign Up
+    const emailRef = useRef()
+    const passwordRef = useRef()
+    const passwordConfirmRef = useRef()
+    const [currentUser, setCurrentUser] = useState()
+    // Candidate states
+    const [candidateName, setCandidateName] = useState('')
+    const [candidateSubject, setCandidateSubject] = useState('')
+    const [candidateEmail, setCandidateEmail] = useState('')
+    const [candidatePhone, setCandidatePhone] = useState('')
+    const [candidateAddress, setCandidateAddress] = useState('')
+    const [candidateBirth, setCandidateBirth] = useState('')
+    // Modal state
+    const [showModal, setShowModal] = useState(false)
 
+
+    // ADMISSION
     useEffect(() => {
         const fetchAdmission = async () => {
             const response = await fetch('https://college-mern-backend-raiyan109.vercel.app/api/admission')
@@ -24,14 +44,20 @@ const CollegeInfoProvider = ({ children }) => {
 
 
     // AUTH
-    // const [value, setValue] = useState('')
-    const [user, setUser] = useState('')
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
-    const [fetchEmailLogin, setFetchEmailLogin] = useState([])
+    // Sign Up
+    const signUp = (email, password) => {
+        createUserWithEmailAndPassword(email, password)
+    }
+
+    useEffect(() => {
+        const unSubscribe = auth.onAuthStateChanged(user => {
+            setCurrentUser(user)
+        })
+        return unSubscribe
+    }, [])
 
 
-    // Email password
+    // Email password Login
     const handleLogin = async (e) => {
         e.preventDefault()
         const response = await fetch('http://localhost:5000/api/login', {
@@ -62,6 +88,8 @@ const CollegeInfoProvider = ({ children }) => {
         }
         fetchEmailLogin()
     }, [])
+
+
 
 
     const handleGoogleLogin = (e) => {
@@ -99,15 +127,7 @@ const CollegeInfoProvider = ({ children }) => {
             });
     }
 
-
-    // Candidate states
-    const [candidateName, setCandidateName] = useState('')
-    const [candidateSubject, setCandidateSubject] = useState('')
-    const [candidateEmail, setCandidateEmail] = useState('')
-    const [candidatePhone, setCandidatePhone] = useState('')
-    const [candidateAddress, setCandidateAddress] = useState('')
-    const [candidateBirth, setCandidateBirth] = useState('')
-
+    // Candidate
     const handleCandidateForm = async (e) => {
         e.preventDefault()
         const response = await fetch('http://localhost:5000/api/candidate', {
@@ -129,15 +149,7 @@ const CollegeInfoProvider = ({ children }) => {
         console.log(candidateData);
     }
 
-
-    // Modal state
-    const [showModal, setShowModal] = useState(false)
-
-
-
-
-
-
+    // Initial Values
     const value = {
         admission,
         handleGoogleLogin,
@@ -162,7 +174,12 @@ const CollegeInfoProvider = ({ children }) => {
         setCandidateEmail,
         setCandidatePhone,
         setCandidateAddress,
-        setCandidateBirth
+        setCandidateBirth,
+        emailRef,
+        passwordRef,
+        passwordConfirmRef,
+        currentUser,
+        signUp
     }
     return (
         <COLLEGE_CONTEXT.Provider value={value}>
