@@ -1,6 +1,7 @@
 import { createContext, useEffect, useRef, useState } from "react";
 import { auth, provider, facebookProvider } from '../firebase.config'
 import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithPopup, signOut } from "firebase/auth";
+import Loading from "../pages/Loading";
 
 export const COLLEGE_CONTEXT = createContext()
 
@@ -61,7 +62,7 @@ const CollegeInfoProvider = ({ children }) => {
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, (user) => {
             setCurrentUser(user);
-            console.log(user);
+            setLoading(false)
         });
         return unSubscribe;
     }, []);
@@ -194,7 +195,8 @@ const CollegeInfoProvider = ({ children }) => {
     }
     return (
         <COLLEGE_CONTEXT.Provider value={value}>
-            {children}
+            {loading ? <Loading /> : children}
+            {/* {children} */}
         </COLLEGE_CONTEXT.Provider>
     )
 }
