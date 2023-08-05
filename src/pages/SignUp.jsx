@@ -1,10 +1,10 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { COLLEGE_CONTEXT } from "../context/CollegeInfoProvider";
 import logo from '../assets/line.png'
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 const SignUp = () => {
-    const { handleGoogleLogin, handleFacebookLogin, emailRef, passwordRef, passwordConfirmRef, signUp, currentUser, error, setError, loading, setLoading, handleLogin } = useContext(COLLEGE_CONTEXT)
-    console.log(currentUser);
+    const { handleGoogleLogin, handleFacebookLogin, emailRef, passwordRef, passwordConfirmRef, signUp, currentUser, error, setError, loading, setLoading } = useContext(COLLEGE_CONTEXT)
+    const navigate = useNavigate();
 
 
     const handleSubmit = async (e) => {
@@ -18,6 +18,7 @@ const SignUp = () => {
             setError('')
             setLoading(true)
             await signUp(emailRef.current.value, passwordRef.current.value)
+            navigate('/')
         } catch (error) {
             setError('Failed to create an account')
         }

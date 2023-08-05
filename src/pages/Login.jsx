@@ -1,21 +1,20 @@
 import { useContext } from 'react';
 import { COLLEGE_CONTEXT } from '../context/CollegeInfoProvider';
 import logo from '../assets/line.png'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 
 const Login = () => {
-    const { handleGoogleLogin, handleFacebookLogin, email, setEmail,
-        password, setPassword, handleLogin, error, setError, loading, setLoading, emailRef, passwordRef, passwordConfirmRef, currentUser } = useContext(COLLEGE_CONTEXT)
+    const { handleGoogleLogin, handleFacebookLogin, handleLogin, error, setError, setLoading, emailRef, passwordRef, currentUser } = useContext(COLLEGE_CONTEXT)
+    const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-
-
         try {
             setError('')
             setLoading(true)
             await handleLogin(emailRef.current.value, passwordRef.current.value)
+            navigate('/')
         } catch (error) {
             setError('Failed to login ' + error.message)
         }

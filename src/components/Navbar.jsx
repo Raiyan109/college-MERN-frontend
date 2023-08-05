@@ -9,8 +9,8 @@ const Navbar = () => {
 
     const [menu, setMenu] = useState(false)
     const [color, setColor] = useState(false)
-    const { user, fetchEmailLogin, email } = useContext(COLLEGE_CONTEXT)
-    console.log(user, fetchEmailLogin, email);
+    const { user, email, currentUser } = useContext(COLLEGE_CONTEXT)
+    console.log(currentUser?.email);
     const changeColor = () => {
         if (window.scrollY >= 100) {
             setColor(true)
@@ -57,6 +57,7 @@ const Navbar = () => {
                             </Link></li>
                             <li className='block py-2 pr-4 pl-3 '><Link className='text-2xl font-bold ' to='/profile'>
                                 {user.displayName ? user.displayName : email}
+                                {currentUser.email}
                             </Link></li>
                         </ul>
                     </div>
