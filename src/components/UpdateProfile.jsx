@@ -1,4 +1,3 @@
-import { BsFillPersonFill } from 'react-icons/bs';
 import ModalImg from '../assets/pexels-stanley-morales-1454360.jpg'
 
 const ProfileModal = () => {
