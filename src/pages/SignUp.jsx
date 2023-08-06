@@ -70,7 +70,7 @@ const SignUp = () => {
                                         // onChange={(e) => setPassword(e.target.value)}
                                         className="flex items-center group h-12 px-6 border-2 border-gray-300 rounded-full transition duration-300 hover:border-blue-400 focus:bg-blue-50 active:bg-blue-100" type="password" />
 
-                                    <input disabled={loading} className='flex items-center justify-center group h-12 px-6 border-2 border-gray-300 rounded-full transition duration-300  hover:text-white text-black font-semibold hover:bg-gray-800 cursor-pointer' type="submit" value="Sign Up" />
+                                    <input disabled={loading} className='flex items-center justify-center group h-12 px-6 border-2 border-gray-300 rounded-full transition duration-300  hover:text-black text-white font-semibold bg-gray-800 hover:bg-gray-300 cursor-pointer' type="submit" value="Sign Up" />
 
                                     <p>Or use any of these...</p>
 
@@ -103,6 +103,8 @@ const SignUp = () => {
                             <p className='mt-6 font-semibold'>Already have an account?
                                 <Link className='text-blue-500 ml-3' to={'/login'}>Login</Link>
                             </p>
+                            <p className='py-6 '>Forgotten Password?
+                                <Link className='text-blue-500 ml-3' to={'/forgot-password'}>Reset password</Link></p>
                         </div>
                     </div>
                 </div>

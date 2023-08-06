@@ -1,6 +1,6 @@
 import { createContext, useEffect, useRef, useState } from "react";
 import { auth, provider, facebookProvider } from '../firebase.config'
-import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
+import { createUserWithEmailAndPassword, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
 import Loading from "../pages/Loading";
 
 
@@ -29,6 +29,7 @@ const CollegeInfoProvider = ({ children }) => {
     const [showModal, setShowModal] = useState(false)
     const [error, setError] = useState('')
     const [loading, setLoading] = useState(false)
+    const [message, setMessage] = useState('')
 
     // ADMISSION
     useEffect(() => {
@@ -147,6 +148,11 @@ const CollegeInfoProvider = ({ children }) => {
             });
     }
 
+    // RESET PASSWORD
+    const resetPassword = async (email) => {
+        return sendPasswordResetEmail(auth, email)
+    }
+
     // Candidate
     const handleCandidateForm = async (e) => {
         e.preventDefault()
@@ -200,7 +206,8 @@ const CollegeInfoProvider = ({ children }) => {
         passwordConfirmRef,
         currentUser,
         signUp,
-        error, loading, setError, setLoading
+        error, loading, setError, setLoading,
+        resetPassword, message, setMessage
     }
     return (
         <COLLEGE_CONTEXT.Provider value={value}>
