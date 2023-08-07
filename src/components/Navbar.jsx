@@ -10,7 +10,6 @@ const Navbar = () => {
     const [menu, setMenu] = useState(false)
     const [color, setColor] = useState(false)
     const { user, email, currentUser } = useContext(COLLEGE_CONTEXT)
-    console.log(currentUser?.email);
     const changeColor = () => {
         if (window.scrollY >= 100) {
             setColor(true)

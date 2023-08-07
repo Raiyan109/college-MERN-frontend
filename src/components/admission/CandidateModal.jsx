@@ -16,7 +16,7 @@ const CandidateModal = () => {
         setCandidateEmail,
         setCandidatePhone,
         setCandidateAddress,
-        setCandidateBirth } = useContext(COLLEGE_CONTEXT)
+        setCandidateBirth, setShowModal } = useContext(COLLEGE_CONTEXT)
     return (
         <div>
             <form onClick={handleCandidateForm}>
@@ -68,16 +68,15 @@ const CandidateModal = () => {
                                         onChange={(e) => setCandidateBirth(e.target.value)}
                                         className="flex items-center group h-12 px-6 border-2 border-gray-300 rounded-full transition duration-300 hover:border-blue-400 focus:bg-blue-50 active:bg-blue-100" type="number" />
 
-                                    <input className='flex items-center justify-center group h-12 px-6 border-2 border-gray-300 rounded-full transition duration-300  hover:text-white text-black font-semibold hover:bg-gray-800 cursor-pointer' type="submit" value="Submit" />
+                                    <input className='flex items-center justify-center group h-12 px-6 border-2 border-gray-300 rounded-full transition duration-300  hover:text-black text-white font-semibold bg-gray-800 hover:bg-gray-300 cursor-pointer' type="submit" value="Submit" />
 
 
                                 </div>
                             </div>
                             <div className="p-3  mt-2 text-center space-x-4 md:block">
-                                <button className="mb-2 md:mb-0 bg-white px-5 py-2 text-sm shadow-sm font-medium tracking-wider border text-gray-600 rounded-full hover:shadow-lg hover:bg-gray-100">
-                                    Cancel
-                                </button>
-                                <button className="mb-2 md:mb-0 bg-red-500 border border-red-500 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-red-600">Delete</button>
+                                <button
+                                    onClick={() => setShowModal(false)}
+                                    className="mb-2 md:mb-0 bg-red-500 border border-red-500 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-red-600">Cancel</button>
                             </div>
                         </div>
                     </div>

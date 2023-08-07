@@ -1,6 +1,6 @@
 import { createContext, useEffect, useRef, useState } from "react";
 import { auth, provider, facebookProvider } from '../firebase.config'
-import { createUserWithEmailAndPassword, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
+import { createUserWithEmailAndPassword, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut, updateEmail as updateEmailInAuth } from "firebase/auth";
 import Loading from "../pages/Loading";
 
 
@@ -63,6 +63,7 @@ const CollegeInfoProvider = ({ children }) => {
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, (user) => {
             setCurrentUser(user);
+            console.log(user);
             setLoading(false)
         });
         return unSubscribe;
@@ -149,8 +150,17 @@ const CollegeInfoProvider = ({ children }) => {
     }
 
     // RESET PASSWORD
-    const resetPassword = async (email) => {
+    const resetPassword = (email) => {
         return sendPasswordResetEmail(auth, email)
+    }
+
+    // UPDATE PROFILE
+    const updateEmailInAuth = (email) => {
+        return updateEmail(currentUser, email)
+    }
+
+    const updatePasswordInAuth = async (email) => {
+        return await updatePassword(currentUser, email)
     }
 
     // Candidate
@@ -207,7 +217,9 @@ const CollegeInfoProvider = ({ children }) => {
         currentUser,
         signUp,
         error, loading, setError, setLoading,
-        resetPassword, message, setMessage
+        resetPassword, message, setMessage,
+        updateEmailInAuth, updatePasswordInAuth
+
     }
     return (
         <COLLEGE_CONTEXT.Provider value={value}>
