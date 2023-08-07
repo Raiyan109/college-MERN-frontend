@@ -17,6 +17,12 @@ const CollegeInfoProvider = ({ children }) => {
     const emailRef = useRef()
     const passwordRef = useRef()
     const passwordConfirmRef = useRef()
+    const candidateNameRef = useRef()
+    const candidateSubjectRef = useRef()
+    const candidateEmailRef = useRef()
+    const candidatePhoneRef = useRef()
+    const candidateAddressRef = useRef()
+    const candidateBirthRef = useRef()
     const [currentUser, setCurrentUser] = useState(null)
     // Candidate states
     const [candidateName, setCandidateName] = useState('')
@@ -32,6 +38,7 @@ const CollegeInfoProvider = ({ children }) => {
     const [message, setMessage] = useState('')
 
     // ADMISSION
+    // GET
     useEffect(() => {
         const fetchAdmission = async () => {
             const response = await fetch('https://college-mern-backend-raiyan109.vercel.app/api/admission')
@@ -164,20 +171,20 @@ const CollegeInfoProvider = ({ children }) => {
     }
 
     // Candidate
-    const handleCandidateForm = async (e) => {
-        e.preventDefault()
+    const handleCandidateForm = async (candidateName, candidateSubject, candidateEmail, candidatePhone, candidateAddress, candidateBirth) => {
+        console.log(candidateName, candidateSubject, candidateEmail, candidatePhone, candidateAddress, candidateBirth);
         const response = await fetch('http://localhost:5000/api/candidate', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                candidateName,
-                candidateSubject,
-                candidateEmail,
-                candidatePhone,
-                candidateAddress,
-                candidateBirth
+                name: candidateName,
+                subject: candidateSubject,
+                email: candidateEmail,
+                phone: candidatePhone,
+                address: candidateAddress,
+                birthDate: candidateBirth
             })
         })
 
@@ -199,12 +206,12 @@ const CollegeInfoProvider = ({ children }) => {
         showModal,
         setShowModal,
         handleCandidateForm,
-        candidateName,
-        candidateSubject,
-        candidateEmail,
-        candidatePhone,
-        candidateAddress,
-        candidateBirth,
+        candidateNameRef,
+        candidateSubjectRef,
+        candidateEmailRef,
+        candidatePhoneRef,
+        candidateAddressRef,
+        candidateBirthRef,
         setCandidateName,
         setCandidateSubject,
         setCandidateEmail,
