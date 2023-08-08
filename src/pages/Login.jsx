@@ -2,6 +2,7 @@ import { useContext } from 'react';
 import { COLLEGE_CONTEXT } from '../context/CollegeInfoProvider';
 import logo from '../assets/line.png'
 import { Link, useNavigate } from 'react-router-dom';
+import Navbar from '../components/Navbar';
 
 
 const Login = () => {
@@ -24,6 +25,7 @@ const Login = () => {
 
     return (
         <div>
+            <Navbar />
             {/* {value ? <Home /> : */}
             <div className="relative py-16 bg-gradient-to-br from-sky-50 to-gray-200">
                 <div className="relative container m-auto px-6 text-gray-500 md:px-12 xl:px-40">
