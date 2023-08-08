@@ -81,7 +81,7 @@ const CandidateModal = () => {
                                         ref={candidateBirthRef}
                                         // value={candidateBirth}
                                         // onChange={(e) => setCandidateBirth(e.target.value)}
-                                        className="flex items-center group h-12 px-6 border-2 border-gray-300 rounded-full transition duration-300 hover:border-blue-400 focus:bg-blue-50 active:bg-blue-100" type="number" />
+                                        className="flex items-center group h-12 px-6 border-2 border-gray-300 rounded-full transition duration-300 hover:border-blue-400 focus:bg-blue-50 active:bg-blue-100" type="date" />
 
                                     <input className='flex items-center justify-center group h-12 px-6 border-2 border-gray-300 rounded-full transition duration-300  hover:text-black text-white font-semibold bg-gray-800 hover:bg-gray-300 cursor-pointer' type="submit" value="Submit" />
 

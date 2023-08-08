@@ -23,6 +23,7 @@ const CollegeInfoProvider = ({ children }) => {
     const candidatePhoneRef = useRef()
     const candidateAddressRef = useRef()
     const candidateBirthRef = useRef()
+    const [candidate, setCandidate] = useState([])
     const [currentUser, setCurrentUser] = useState(null)
     // Candidate states
     const [candidateName, setCandidateName] = useState('')
@@ -171,6 +172,7 @@ const CollegeInfoProvider = ({ children }) => {
     }
 
     // Candidate
+    // POST
     const handleCandidateForm = async (candidateName, candidateSubject, candidateEmail, candidatePhone, candidateAddress, candidateBirth) => {
         console.log(candidateName, candidateSubject, candidateEmail, candidatePhone, candidateAddress, candidateBirth);
         const response = await fetch('http://localhost:5000/api/candidate', {
@@ -191,6 +193,23 @@ const CollegeInfoProvider = ({ children }) => {
         const candidateData = await response.json()
         console.log(candidateData);
     }
+
+    // GET Candidate data 
+    // GET
+    useEffect(() => {
+        const fetchCandidate = async () => {
+            const response = await fetch('http://localhost:5000/api/candidate')
+
+            const json = await response.json()
+
+            if (response.ok) {
+                setCandidate(json)
+                console.log(candidate[0].name);
+            }
+
+        }
+        fetchCandidate()
+    }, [])
 
     // Initial Values
     const value = {
@@ -225,7 +244,8 @@ const CollegeInfoProvider = ({ children }) => {
         signUp,
         error, loading, setError, setLoading,
         resetPassword, message, setMessage,
-        updateEmailInAuth, updatePasswordInAuth
+        updateEmailInAuth, updatePasswordInAuth,
+        candidate
 
     }
     return (
