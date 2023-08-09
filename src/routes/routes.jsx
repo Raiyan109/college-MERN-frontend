@@ -32,8 +32,9 @@ const routes = createBrowserRouter([
     {
         path: '/myCollege',
         element:
-            <PrivateRoute><MyCollege /></PrivateRoute>
-
+            <PrivateRoute>
+                <MyCollege />
+            </PrivateRoute>
     },
     {
         path: '/signUp',

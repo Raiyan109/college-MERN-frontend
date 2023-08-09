@@ -2,10 +2,13 @@ import Navbar from '../../components/Navbar'
 import { useContext } from "react";
 import { COLLEGE_CONTEXT } from '../../context/CollegeInfoProvider'
 import moment from 'moment/moment';
+import { AiFillStar } from 'react-icons/ai'
+
 const MyCollege = () => {
-    const { candidate } = useContext(COLLEGE_CONTEXT)
+    const { candidate, rating, setRating, hover, setHover } = useContext(COLLEGE_CONTEXT)
     console.log(candidate[0]);
     const myTime = moment(candidate[0].birthDate).format("MMM Do YY")
+
     return (
         <div>
             <Navbar />
@@ -48,6 +51,49 @@ const MyCollege = () => {
                         <p className="text-gray-600 text-center font-light lg:px-16">An artist of considerable range, Ryan — the name taken by Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs and records all of his own music, giving it a warm, intimate feel with a solid groove structure. An artist of considerable range.</p>
                         <button className="text-indigo-500 py-2 px-4  font-medium mt-4">  Show more</button>
                     </div> */}
+                </div>
+
+                <div className="p-8 bg-white shadow mt-10">
+
+                    <h1 className="text-4xl font-medium text-gray-700 text-center border-b">Add a review</h1>
+                    <div className="w-full flex flex-col items-center">
+                        <div className="flex flex-col items-center py-6 space-y-3">
+                            <span className="text-lg text-gray-800">Please give a five star rating </span>
+                            <div className="flex space-x-3">
+                                {[...Array(5)].map((star, index) => {
+                                    index += 1;
+                                    return (
+                                        <button
+                                            type="button"
+                                            key={index}
+                                            className={index <= (hover || rating) ? " text-yellow-500" : " text-gray-500"}
+                                            onClick={() => setRating(index)}
+                                            onMouseEnter={() => setHover(index)}
+                                            onMouseLeave={() => setHover(rating)}
+                                        >
+                                            <span className=" cursor-pointer outline-none bg-transparent text-3xl"><AiFillStar /></span>
+                                        </button>
+                                    );
+                                })}
+
+                            </div>
+                        </div>
+                        <div className="w-3/4 flex flex-col">
+                            <textarea rows="5" placeholder='Leave a review' className="flex items-center group  px-6 border-2 border-gray-300 rounded-xl transition duration-300 hover:border-blue-400 focus:bg-blue-50 active:bg-blue-100 resize-none text-gray-600"></textarea>
+                            <button className="flex items-center justify-center group h-12 px-6 border-2 border-gray-300 rounded-full transition duration-300  hover:text-black text-white font-semibold bg-gray-800 hover:bg-gray-300 cursor-pointer my-6">Rate now</button>
+                        </div>
+                    </div>
+                    {/* <div className="text-center p-5 flex-auto justify-center">
+                        <div className="mt-16 grid space-y-4">
+                            <label className="font-semibold text-xs mt-3" >Candidate Phone number</label>
+                            <input
+                                // ref={candidatePhoneRef}
+                                // value={candidatePhone}
+                                // onChange={(e) => setCandidatePhone(e.target.value)}
+                                className="flex items-center group h-12 px-6 border-2 border-gray-300 rounded-md transition duration-300 hover:border-blue-400 focus:bg-blue-50 active:bg-blue-100" type="number" />
+                        </div>
+                    </div> */}
+
                 </div>
             </div>
         </div>

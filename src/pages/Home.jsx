@@ -5,6 +5,7 @@ import Colleges from '../components/Colleges'
 import Gallary from "../components/Gallary";
 import ResearchPapers from "../components/ResearchPapers";
 import Reviews from "../components/Reviews";
+import AddReviewHome from "../components/AddReviewHome";
 
 const Home = () => {
     return (
@@ -14,6 +15,7 @@ const Home = () => {
             <Colleges />
             <ResearchPapers />
             <Reviews />
+            <AddReviewHome />
             <Gallary />
             <Footer />
         </div>

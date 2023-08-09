@@ -37,6 +37,9 @@ const CollegeInfoProvider = ({ children }) => {
     const [error, setError] = useState('')
     const [loading, setLoading] = useState(false)
     const [message, setMessage] = useState('')
+    // Rating state
+    const [rating, setRating] = useState(0);
+    const [hover, setHover] = useState(0);
 
     // ADMISSION
     // GET
@@ -245,8 +248,8 @@ const CollegeInfoProvider = ({ children }) => {
         error, loading, setError, setLoading,
         resetPassword, message, setMessage,
         updateEmailInAuth, updatePasswordInAuth,
-        candidate
-
+        candidate,
+        rating, setRating, hover, setHover
     }
     return (
         <COLLEGE_CONTEXT.Provider value={value}>
