@@ -7,7 +7,7 @@ import { AiFillStar } from 'react-icons/ai'
 const MyCollege = () => {
     const { candidate, rating, setRating, hover, setHover } = useContext(COLLEGE_CONTEXT)
     console.log(candidate[0]);
-    const myTime = moment(candidate[0].birthDate).format("MMM Do YY")
+    const myTime = moment(candidate[0]?.birthDate).format("MMM Do YY")
 
     return (
         <div>
@@ -40,11 +40,11 @@ const MyCollege = () => {
                     </div> */}
                     <h1 className="text-4xl font-medium text-gray-700 text-center border-b">Candidate Details</h1>
                     <div className="mt-20 text-center pb-12">
-                        <h1 className="text-4xl font-medium text-gray-700">{candidate[0].name}</h1>
-                        <p className="font-light text-gray-600 mt-3">Address: {candidate[0].address}</p>
-                        <p className="mt-8 text-gray-500">Phone : {candidate[0].phone}</p>
-                        <p className="mt-2 text-gray-500">Subject: {candidate[0].subject}</p>
-                        <p className="mt-2 text-gray-500">Email : {candidate[0].email}</p>
+                        <h1 className="text-4xl font-medium text-gray-700">{candidate[0]?.name}</h1>
+                        <p className="font-light text-gray-600 mt-3">Address: {candidate[0]?.address}</p>
+                        <p className="mt-8 text-gray-500">Phone : {candidate[0]?.phone}</p>
+                        <p className="mt-2 text-gray-500">Subject: {candidate[0]?.subject}</p>
+                        <p className="mt-2 text-gray-500">Email : {candidate[0]?.email}</p>
                         <p className="mt-2 text-gray-500">Date Of Birth: {myTime}</p>
                     </div>
                     {/* <div className="mt-12 flex flex-col justify-center">

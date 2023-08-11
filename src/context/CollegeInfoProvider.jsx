@@ -2,6 +2,7 @@ import { createContext, useEffect, useRef, useState } from "react";
 import { auth, provider, facebookProvider } from '../firebase.config'
 import { createUserWithEmailAndPassword, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut, updateEmail as updateEmailInAuth } from "firebase/auth";
 import Loading from "../pages/Loading";
+import { Navigate } from "react-router-dom";
 
 
 export const COLLEGE_CONTEXT = createContext()
@@ -125,17 +126,21 @@ const CollegeInfoProvider = ({ children }) => {
 
 
 
-    const handleGoogleLogin = (e) => {
-        e.preventDefault()
-        signInWithPopup(auth, provider)
-            .then((data) => {
-                const user = data.user
-                setUser(user)
-            })
-            .catch((err) => {
-                console.error('Firebase Google Login Error:', err);
-            });
+    const handleGoogleLogin = async (e) => {
+        e.preventDefault();
+        try {
+            const data = await signInWithPopup(auth, provider);
+            const user = data.user;
+            setUser(user);
+            setCurrentUser(user);
+
+            // Ensure that you navigate after setting the state
+            <Navigate to='/' />
+        } catch (err) {
+            console.error('Firebase Google Login Error:', err);
+        }
     };
+
 
     const handleFacebookLogin = (e) => {
         e.preventDefault()

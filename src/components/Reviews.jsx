@@ -20,12 +20,14 @@ const Reviews = () => {
                             </div>
                         </div>
 
-                        <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-x-32">
-                            {
-                                StudentsReviews.map((review, idx) =>
-                                    <Review key={review.id} review={review} id={review.id} idx={idx} />
-                                )
-                            }
+                        <div className="flex justify-center items-center">
+                            <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-x-32">
+                                {
+                                    StudentsReviews.map((review, idx) =>
+                                        <Review key={review.id} review={review} id={review.id} idx={idx} />
+                                    )
+                                }
+                            </div>
                         </div>
 
                     </div>

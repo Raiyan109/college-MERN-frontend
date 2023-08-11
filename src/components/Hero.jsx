@@ -4,7 +4,7 @@ import InputModal from './InputModal';
 const Hero = () => {
     return (
         <div>
-            <div className='h-screen flex justify-center items-center bg-cover bg-no-repeat' id='banner' style={{ backgroundImage: `url(${bgHero})` }} >
+            <div className='h-screen flex justify-center items-center md:bg-cover bg-auto bg-no-repeat' id='banner' style={{ backgroundImage: `url(${bgHero})` }} >
                 <div className="hero-text">
                     <h1 style={{ color: 'white', fontSize: '50px' }}>Meet Your Dream Colleges</h1>
                     <p>Choose one and get big!</p>

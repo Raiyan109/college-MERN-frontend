@@ -7,6 +7,7 @@ import Navbar from '../components/Navbar';
 
 const Login = () => {
     const { handleGoogleLogin, handleFacebookLogin, handleLogin, error, setError, setLoading, emailRef, passwordRef, currentUser } = useContext(COLLEGE_CONTEXT)
+    console.log(currentUser);
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
@@ -16,6 +17,12 @@ const Login = () => {
             setLoading(true)
             await handleLogin(emailRef.current.value, passwordRef.current.value)
             navigate('/')
+            // const googleLoginSuccess = currentUser && currentUser.providerData.some(provider => provider.providerId === "google.com");
+
+            // if (googleLoginSuccess) {
+
+            //     navigate('/');
+            // }
         } catch (error) {
             setError('Failed to login ' + error.message)
         }

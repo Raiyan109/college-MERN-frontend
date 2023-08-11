@@ -2,8 +2,19 @@
 const ResearchPapers = () => {
     return (
         <div>
-            <div className="mx-auto mb-[90px] max-w-[510px] text-center lg:mb-20">
+            {/* <div className="mx-auto mb-[90px] max-w-[510px] text-center lg:mb-20">
                 <h1 id='article' className="text-3xl font-bold text-blue">Research Case Studies</h1>
+            </div> */}
+            <div className="text-center max-w-xl mx-auto">
+                <h1 className="text-6xl md:text-7xl font-bold mb-5 text-gray-600">Research <br />Case Studies</h1>
+
+                <div className="text-center mb-10">
+                    <span className="inline-block w-1 h-1 rounded-full bg-indigo-500 ml-1"></span>
+                    <span className="inline-block w-3 h-1 rounded-full bg-indigo-500 ml-1"></span>
+                    <span className="inline-block w-40 h-1 rounded-full bg-indigo-500"></span>
+                    <span className="inline-block w-3 h-1 rounded-full bg-indigo-500 ml-1"></span>
+                    <span className="inline-block w-1 h-1 rounded-full bg-indigo-500 ml-1"></span>
+                </div>
             </div>
 
             <section className="">

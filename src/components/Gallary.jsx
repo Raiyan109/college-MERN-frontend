@@ -9,8 +9,15 @@ import groupStudents6 from '../assets/college-group6.jpg'
 const Gallary = () => {
     return (
         <div className='mb-16'>
-            <div className="mx-auto mb-[90px] max-w-[510px] text-center lg:mb-20">
-                <h1 id='article' className="text-3xl font-bold text-blue">Colleges Image Gallery</h1>
+            <div className="text-center max-w-xl mx-auto">
+                <h1 className="text-6xl md:text-7xl font-bold mb-5 text-gray-600">Colleges<br />Image Gallery</h1>
+                <div className="text-center mb-10">
+                    <span className="inline-block w-1 h-1 rounded-full bg-indigo-500 ml-1"></span>
+                    <span className="inline-block w-3 h-1 rounded-full bg-indigo-500 ml-1"></span>
+                    <span className="inline-block w-40 h-1 rounded-full bg-indigo-500"></span>
+                    <span className="inline-block w-3 h-1 rounded-full bg-indigo-500 ml-1"></span>
+                    <span className="inline-block w-1 h-1 rounded-full bg-indigo-500 ml-1"></span>
+                </div>
             </div>
             <div className="gridywrap">
                 <div className="gridy-2 gridyhe-1">
