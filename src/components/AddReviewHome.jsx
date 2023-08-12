@@ -42,7 +42,7 @@ const AddReviewHome = () => {
                             </div>
                             <div className="w-3/4 flex flex-col">
                                 <textarea rows="5" placeholder='Leave a review' className="flex items-center group  px-6 border-2 border-gray-300 rounded-xl transition duration-300 hover:border-blue-400 focus:bg-blue-50 active:bg-blue-100 resize-none text-gray-600"></textarea>
-                                <button className="flex items-center justify-center group h-12 px-6 border-2 border-gray-300 rounded-full transition duration-300  hover:text-black text-white font-semibold bg-gray-800 hover:bg-gray-300 cursor-pointer my-6">Rate now</button>
+                                <button className="flex items-center justify-center group h-12 px-6 border-2 border-gray-300 rounded-full transition duration-300  hover:text-black text-white font-semibold bg-gray-800 hover:bg-gray-300 cursor-pointer my-6">Submit</button>
                             </div>
                         </div>
                         {/* <div className="h-20 flex items-center justify-center">

@@ -1,8 +1,12 @@
+import { useContext } from "react";
 import { StudentsReviews } from "../constants";
 import Review from "./Review";
+import { COLLEGE_CONTEXT } from "../context/CollegeInfoProvider";
 
 
 const Reviews = () => {
+    const { reviews, currentUser } = useContext(COLLEGE_CONTEXT)
+    console.log(reviews);
     return (
         <div>
             <div className="min-w-screen min-h-screen bg-gray-50 flex items-center justify-center py-5">
@@ -23,8 +27,8 @@ const Reviews = () => {
                         <div className="flex justify-center items-center">
                             <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-x-32">
                                 {
-                                    StudentsReviews.map((review, idx) =>
-                                        <Review key={review.id} review={review} id={review.id} idx={idx} />
+                                    reviews.map((review, idx) =>
+                                        <Review key={review.id} review={review} id={review.id} idx={idx} currentUser={currentUser} />
                                     )
                                 }
                             </div>

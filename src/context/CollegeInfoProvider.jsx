@@ -1,12 +1,13 @@
 import { createContext, useEffect, useRef, useState } from "react";
 import { auth, provider, facebookProvider } from '../firebase.config'
-import { createUserWithEmailAndPassword, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut, updateEmail as updateEmailInAuth } from "firebase/auth";
+import { createUserWithEmailAndPassword, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
 import Loading from "../pages/Loading";
 import { Navigate } from "react-router-dom";
 
 
 export const COLLEGE_CONTEXT = createContext()
 
+// eslint-disable-next-line react/prop-types
 const CollegeInfoProvider = ({ children }) => {
 
     const [admission, setAdmission] = useState([])
@@ -27,12 +28,12 @@ const CollegeInfoProvider = ({ children }) => {
     const [candidate, setCandidate] = useState([])
     const [currentUser, setCurrentUser] = useState(null)
     // Candidate states
-    const [candidateName, setCandidateName] = useState('')
-    const [candidateSubject, setCandidateSubject] = useState('')
-    const [candidateEmail, setCandidateEmail] = useState('')
-    const [candidatePhone, setCandidatePhone] = useState('')
-    const [candidateAddress, setCandidateAddress] = useState('')
-    const [candidateBirth, setCandidateBirth] = useState('')
+    // const [candidateName, setCandidateName] = useState('')
+    // const [candidateSubject, setCandidateSubject] = useState('')
+    // const [candidateEmail, setCandidateEmail] = useState('')
+    // const [candidatePhone, setCandidatePhone] = useState('')
+    // const [candidateAddress, setCandidateAddress] = useState('')
+    // const [candidateBirth, setCandidateBirth] = useState('')
     // Modal state
     const [showModal, setShowModal] = useState(false)
     const [error, setError] = useState('')
@@ -41,6 +42,10 @@ const CollegeInfoProvider = ({ children }) => {
     // Rating state
     const [rating, setRating] = useState(0);
     const [hover, setHover] = useState(0);
+    // Review state
+    const reviewRef = useRef()
+    const [reviews, setReviews] = useState([])
+
 
     // ADMISSION
     // GET
@@ -219,6 +224,40 @@ const CollegeInfoProvider = ({ children }) => {
         fetchCandidate()
     }, [])
 
+    // REVIEW
+    // POST
+    const handleReviewForm = async (reviewText, rating) => {
+        const response = await fetch('http://localhost:5000/api/review', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                reviewText,
+                rating
+            })
+        })
+
+        const reviewData = await response.json()
+        console.log(reviewData);
+    }
+
+    // GET
+    useEffect(() => {
+        const fetchReviews = async () => {
+            const response = await fetch('http://localhost:5000/api/review')
+
+            const json = await response.json()
+
+            if (response.ok) {
+                setReviews(json)
+                console.log(reviews);
+            }
+
+        }
+        fetchReviews()
+    }, [])
+
     // Initial Values
     const value = {
         admission,
@@ -239,12 +278,12 @@ const CollegeInfoProvider = ({ children }) => {
         candidatePhoneRef,
         candidateAddressRef,
         candidateBirthRef,
-        setCandidateName,
-        setCandidateSubject,
-        setCandidateEmail,
-        setCandidatePhone,
-        setCandidateAddress,
-        setCandidateBirth,
+        // setCandidateName,
+        // setCandidateSubject,
+        // setCandidateEmail,
+        // setCandidatePhone,
+        // setCandidateAddress,
+        // setCandidateBirth,
         emailRef,
         passwordRef,
         passwordConfirmRef,
@@ -254,7 +293,8 @@ const CollegeInfoProvider = ({ children }) => {
         resetPassword, message, setMessage,
         updateEmailInAuth, updatePasswordInAuth,
         candidate,
-        rating, setRating, hover, setHover
+        rating, setRating, hover, setHover,
+        reviewRef, handleReviewForm, reviews
     }
     return (
         <COLLEGE_CONTEXT.Provider value={value}>
