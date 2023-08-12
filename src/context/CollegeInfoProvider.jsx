@@ -99,7 +99,7 @@ const CollegeInfoProvider = ({ children }) => {
         }
         setLoading(false);
 
-        const response = await fetch('http://localhost:5000/api/login', {
+        const response = await fetch('https://college-mern-backend-raiyan109.vercel.app/api/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -116,7 +116,7 @@ const CollegeInfoProvider = ({ children }) => {
 
     useEffect(() => {
         const fetchEmailLogin = async () => {
-            const response = await fetch('http://localhost:5000/api/login')
+            const response = await fetch('https://college-mern-backend-raiyan109.vercel.app/api/login')
 
             const json = await response.json()
 
@@ -188,7 +188,7 @@ const CollegeInfoProvider = ({ children }) => {
     // POST
     const handleCandidateForm = async (candidateName, candidateSubject, candidateEmail, candidatePhone, candidateAddress, candidateBirth) => {
         console.log(candidateName, candidateSubject, candidateEmail, candidatePhone, candidateAddress, candidateBirth);
-        const response = await fetch('http://localhost:5000/api/candidate', {
+        const response = await fetch('https://college-mern-backend-raiyan109.vercel.app/api/candidate', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -211,7 +211,7 @@ const CollegeInfoProvider = ({ children }) => {
     // GET
     useEffect(() => {
         const fetchCandidate = async () => {
-            const response = await fetch('http://localhost:5000/api/candidate')
+            const response = await fetch('https://college-mern-backend-raiyan109.vercel.app/api/candidate')
 
             const json = await response.json()
 
@@ -227,7 +227,7 @@ const CollegeInfoProvider = ({ children }) => {
     // REVIEW
     // POST
     const handleReviewForm = async (reviewText, rating) => {
-        const response = await fetch('http://localhost:5000/api/review', {
+        const response = await fetch('https://college-mern-backend-raiyan109.vercel.app/api/review', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -245,7 +245,7 @@ const CollegeInfoProvider = ({ children }) => {
     // GET
     useEffect(() => {
         const fetchReviews = async () => {
-            const response = await fetch('http://localhost:5000/api/review')
+            const response = await fetch('https://college-mern-backend-raiyan109.vercel.app/api/review')
 
             const json = await response.json()
 
